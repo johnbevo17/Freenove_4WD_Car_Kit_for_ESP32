@@ -20,8 +20,8 @@ int paramters[8];
 bool videoFlag = 0;
 
 void WiFi_Init() {
-  ssid_Router     =   "********";    //Modify according to your router name
-  password_Router =   "********";    //Modify according to your router password
+  ssid_Router     =   "DoESLIiverpool";    //Modify according to your router name
+  password_Router =   "decafbad00";    //Modify according to your router password
   ssid_AP         =   "Sunshine";    //ESP32 turns on an AP and calls it Sunshine
   password_AP     =   "Sunshine";    //Set your AP password for ESP32 to Sunshine
   frame_size      =    FRAMESIZE_CIF;//400*296
@@ -35,7 +35,7 @@ void setup() {
   Serial.begin(115200);
   Serial.setDebugOutput(true);
   WiFi_Init();              //WiFi paramters initialization
-  WiFi_Setup(1);            //Start AP Mode. If you want to connect to a router, change 1 to 0.
+  WiFi_Setup(0);            //Start AP Mode. If you want to connect to a router, change 1 to 0.
   server_Cmd.begin(4000);   //Start the command server
   server_Camera.begin(7000);//Turn on the camera server
 

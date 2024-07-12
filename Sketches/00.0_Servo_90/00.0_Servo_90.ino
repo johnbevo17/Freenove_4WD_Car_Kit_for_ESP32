@@ -9,10 +9,12 @@
 void setup()
 {
   Servo_Setup();    //Servo initialization
+  Serial.begin(115200);
 }
 
 void loop()
 {
+  printf("Running\n");
   Servo_1_Angle(90);//Set the Angle value of servo 1 to 90°
   Servo_2_Angle(90);//Set the Angle value of servo 2 to 90°
   delay(1000);

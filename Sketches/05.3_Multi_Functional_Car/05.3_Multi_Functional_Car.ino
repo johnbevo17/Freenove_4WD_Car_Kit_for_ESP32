@@ -57,21 +57,21 @@ void handleControl(unsigned long value)
   switch (value) {
     case 0xFF02FD:// Receive the number '+'
     case 0xD7E84B1B:
-      Motor_Move(2000,2000,2000,2000);
+      Motor_Move(-2000,-2000,-2000,-2000);
       break;
     case 0xFF9867:// Receive the number '-'
     case 0x97483BFB:
-      Motor_Move(-2000,-2000,-2000,-2000);
+      Motor_Move(2000,2000,2000,2000);
       break;
     case 0xFFE01F:// Receive the number '|<<'
     case 0xF076C13B:
-      Motor_Move(-2000,-2000,2000,2000);
+      Motor_Move(2000,2000,-2000,-2000);
       delay(200);
       Motor_Move(0,0,0,0);
       break;
     case 0xFF906F:// Receive the number '>>|'
     case 0xE5CFBD7F:
-      Motor_Move(2000,2000,-2000,-2000);
+      Motor_Move(-2000,-2000,2000,2000);
       delay(200);
       Motor_Move(0,0,0,0);      
       break;
