@@ -20,7 +20,7 @@ int paramters[8];
 bool videoFlag = 0;
 
 void WiFi_Init() {
-  ssid_Router     =   "DoESLIiverpool";    //Modify according to your router name
+  ssid_Router     =   "DoESLiverpool";    //Modify according to your router name
   password_Router =   "decafbad00";    //Modify according to your router password
   ssid_AP         =   "Sunshine";    //ESP32 turns on an AP and calls it Sunshine
   password_AP     =   "Sunshine";    //Set your AP password for ESP32 to Sunshine
@@ -34,8 +34,15 @@ void setup() {
   Buzzer_Setup();           //Buzzer initialization
   Serial.begin(115200);
   Serial.setDebugOutput(true);
-  WiFi_Init();              //WiFi paramters initialization
-  WiFi_Setup(0);            //Start AP Mode. If you want to connect to a router, change 1 to 0.
+
+//  WiFi_Init();              //WiFi paramters initialization
+//  WiFi_Setup(1);            //Start AP Mode. If you want to connect to a router, change 1 to 0.
+
+  WiFi.softAP("Sunshine", "Sunshine");
+  IPAddress myIP = WiFi.softAPIP();
+  Serial.print("AP IP address: ");
+  Serial.println(myIP);
+
   server_Cmd.begin(4000);   //Start the command server
   server_Camera.begin(7000);//Turn on the camera server
 
@@ -45,6 +52,7 @@ void setup() {
   PCA9685_Setup();          //PCA9685 initialization
   Light_Setup();            //Light initialization
   Track_Setup();            //Track initialization
+
 
   disableCore0WDT();        //Turn off the watchdog function in kernel 0
   xTaskCreateUniversal(loopTask_Camera, "loopTask_Camera", 8192, NULL, 0, NULL, 0);
@@ -176,16 +184,5 @@ void Get_Command(String inputStringTemp)
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 //
